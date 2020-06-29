@@ -33,6 +33,11 @@ def get_coords_with_yandex_geocoder(addr):
 
 
 def gen_geojson_from_addrs_and_lats(addrs_lats: dict):
+    """
+
+    :param addrs_lats: addr is a key, lats is a list value
+    :return: geojson
+    """
     geojson = {
         "type": "FeatureCollection",
         "features": []
@@ -66,5 +71,5 @@ if __name__ == '__main__':
         all_coords[addr] = coords
     geojson = gen_geojson_from_addrs_and_lats(all_coords)
 
-    with open('coords2.geojson', 'w', newline='') as geojson_file:
+    with open('coords.geojson', 'w', newline='') as geojson_file:
         geojson_file.write(json.dumps(geojson, indent=4, sort_keys=True))
